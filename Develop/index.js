@@ -20,13 +20,6 @@ inquirer.prompt([
     },
     {
         type: 'input',
-        message: 'Table of contents:',
-        name: 'contents',
-        validate: (value) => { if (value) {return true}
-    else {return 'Enter value to continue'}}
-    },
-    {
-        type: 'input',
         message: 'How is the app installed?',
         name: 'installation',
         validate: (value) => { if (value) {return true}
@@ -63,13 +56,6 @@ inquirer.prompt([
     },
     {
         type: 'input',
-        message: 'Any issues/questions?',
-        name: 'questions',
-        validate: (value) => { if (value) {return true}
-        else {return 'Enter value to continue'}}
-    },
-    {
-        type: 'input',
         message: 'Enter GitHub username:',
         name: 'git',
         validate: (value) => { if (value) {return true}
@@ -86,16 +72,42 @@ inquirer.prompt([
 .then(( {
     title,
     description,
-    contents,
     installation,
     usage,
     license,
     contributors,
     test,
-    questions,
     git,
     email
-}))
+}) => {
+    // README template
+    const template = `# ${title}
+    ## Description
+    ${description}
+    ## Table of Contents
+    - [Description](#description)
+    - [Installation](#installation)
+    - [Usage](#usage)
+    - [License](#license)
+    - [Contributing](#contributors)
+    - [Tests](#test)
+    - [Questions](#questions)
+    ## Installation
+    ${installation}
+    ## Usage
+    ${usage}
+    ## License
+    ${license}
+    ## Contribution
+    ${contributors}
+    ## Tests
+    ${test}
+    
+    ## Questions
+    - GitHub: ${git}
+    - E-mail: ${email}`;
+}
+)
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
