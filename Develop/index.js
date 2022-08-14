@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 
 // inquirer to generate questions
 inquirer.prompt([
@@ -83,7 +84,7 @@ inquirer.prompt([
     // README template
     const template = `# ${title}
     ## Description
-    ${description}
+    ${description}(#table-of-contents)
     ## Table of Contents
     - [Description](#description)
     - [Installation](#installation)
@@ -93,17 +94,17 @@ inquirer.prompt([
     - [Tests](#test)
     - [Questions](#questions)
     ## Installation
-    ${installation}
+    ${installation}(#table-of-contents)
     ## Usage
-    ${usage}
+    ${usage}(#table-of-contents)
     ## License
-    ${license}
+    ${license}(#table-of-contents)
     ## Contribution
-    ${contributors}
+    ${contributors}(#table-of-contents)
     ## Tests
-    ${test}
+    ${test}(#table-of-contents)
     
-    ## Questions
+    ## Questions(#table-of-contents)
     Find me on GitHub: ${git}
     E-mail me with any questions: ${email}`;
 
