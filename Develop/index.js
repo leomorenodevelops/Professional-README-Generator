@@ -49,7 +49,7 @@ inquirer.prompt([
     },
     {
         type: 'input',
-        message: 'Is there a test included?',
+        message: 'Is there a test included? If so, please provide examples',
         name: 'test',
         validate: (value) => { if (value) {return true}
         else {return 'Enter value to continue'}}
@@ -104,15 +104,14 @@ inquirer.prompt([
     ${test}
     
     ## Questions
-    - GitHub: ${git}
-    - E-mail: ${email}`;
+    Find me on GitHub: ${git}
+    E-mail me with any questions: ${email}`;
 
-    // Function to create README file using fs
     createNewFile(title, template);
 }
 );
 
-// Creates writeToFile function
+// Function to create README file using fs
 function createNewFile(fileName, data) {
     fs.writeFile(`./${fileName.toLowerCase().split(' ').join('')}.md`, data, (err) => {
         if (err){
