@@ -106,14 +106,19 @@ inquirer.prompt([
     ## Questions
     - GitHub: ${git}
     - E-mail: ${email}`;
+
+    // Function to create README file using fs
+    createNewFile(title, template);
 }
-)
+);
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+// Creates writeToFile function
+function createNewFile(fileName, data) {
+    fs.writeFile(`./${fileName.toLowerCase().split(' ').join('')}.md`, data, (err) => {
+        if (err){
+            console.log(err)
+        }
+        console.log('README has been generated');
+    })
+}
 
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
-init();
