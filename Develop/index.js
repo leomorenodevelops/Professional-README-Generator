@@ -1,6 +1,5 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./utils/generateMarkdown.js');
 
 // inquirer to generate questions
 inquirer.prompt([
@@ -37,7 +36,7 @@ inquirer.prompt([
         type: 'list',
         message: 'What licenses were used?',
         name: 'license',
-        choices: ['MIT license', 'GPL license', 'Apache license', 'GNU license', 'N/A'],
+        choices: ['MIT', 'GPL', 'Apache', 'GNU', 'N/A'],
         validate: (value) => { if (value) {return true}
     else {return 'Enter value to continue'}}
     },
@@ -81,40 +80,68 @@ inquirer.prompt([
     git,
     email
 }) => {
+    let projectLicense;
+    if (license !== 'N/A') {
+        projectLicense = `![GitHub license](https://img.shields.io/badge/license-${license}-blue.svg)`;
+      } 
+    let licenseLink;
+    if (license !== 'N/A') {
+        licenseLink = `(https://choosealicense.com/licenses/${license.toLowerCase()})`;
+      }
+      console.log(projectLicense);
     // README template
-    const template = `# ${title}
-    ## Description
-    ${description}(#table-of-contents)
-    ## Table of Contents
-    - [Description](#description)
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [License](#license)
-    - [Contributing](#contributors)
-    - [Tests](#test)
-    - [Questions](#questions)
-    ## Installation
-    ${installation}(#table-of-contents)
-    ## Usage
-    ${usage}(#table-of-contents)
-    ## License
-    ${license}(#table-of-contents)
-    ## Contribution
-    ${contributors}(#table-of-contents)
-    ## Tests
-    ${test}(#table-of-contents)
-    
-    ## Questions(#table-of-contents)
-    Find me on GitHub: ${git}
-    E-mail me with any questions: ${email}`;
+    const template = `
+# ${title}
 
-    createNewFile(title, template);
+![GitHub license](https://img.shields.io/badge/license-${license}-blue.svg)
+
+## Description
+
+${description}
+
+## Table of Contents
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contribution)
+- [Tests](#tests)
+- [Questions](#questions)
+
+## Installation
+
+${installation}
+
+## Usage
+
+${usage}
+
+## License
+
+[${license}]${licenseLink}
+
+## Contribution
+
+${contributors}
+
+## Tests
+
+${test}
+
+## Questions
+
+Find me on GitHub: ${git}
+
+E-mail me with any questions: ${email}
+`;
+
+    createNewFile(template);
 }
 );
 
 // Function to create README file using fs
-function createNewFile(fileName, data) {
-    fs.writeFile(`./${fileName.toLowerCase().split(' ').join('')}.md`, data, (err) => {
+function createNewFile(data) {
+    fs.writeFile('README.md', data, (err) => {
         if (err){
             console.log(err)
         }
