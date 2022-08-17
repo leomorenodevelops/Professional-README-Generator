@@ -11,4 +11,4 @@ This project allowed me to use javascript with node.js to create a README.md fil
 5. Push code to repo stored in GitHub.
 
 ## Usage
-[README Generator Walkthrough.zip](https://github.com/leomorenodevelops/Professional-README-Generator/files/9356442/README.Generator.Walkthrough.zip)
+[Untitled_ Aug 16 2022 11_08 PM.webm](https://user-images.githubusercontent.com/105739936/185039637-71704e3d-4c0d-4819-8009-25e916ba1fc5.webm)
