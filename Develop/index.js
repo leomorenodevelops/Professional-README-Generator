@@ -135,13 +135,13 @@ Find me on GitHub: ${git}
 E-mail me with any questions: ${email}
 `;
 
-    createNewFile(template);
+    createNewFile(title, template);
 }
 );
 
 // Function to create README file using fs
-function createNewFile(data) {
-    fs.writeFile('README.md', data, (err) => {
+function createNewFile(fileName, data) {
+    fs.writeFile(`./${fileName.toLowerCase().split(' ').join('')}.md`, data, (err) => {
         if (err){
             console.log(err)
         }
