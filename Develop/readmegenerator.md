@@ -1,11 +1,11 @@
 
-# test
+# README Generator
 
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Description
 
-test
+Generates README for user
 
 ## Table of Contents
 - [Description](#description)
@@ -18,11 +18,11 @@ test
 
 ## Installation
 
-test
+By following the user prompts
 
 ## Usage
 
-test
+To generate a README file for user
 
 ## License
 
@@ -30,14 +30,14 @@ test
 
 ## Contribution
 
-test
+Me, myself and I
 
 ## Tests
 
-test
+Currently running a test now
 
 ## Questions
 
-Find me on GitHub: test
+Find me on GitHub: leomoreno
 
-E-mail me with any questions: test@tes.com
+E-mail me with any questions: leo@blah.com
